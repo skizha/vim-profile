@@ -218,7 +218,6 @@ syntax on
 autocmd BufWritePost *.py call Flake8()
 
 " Show white spaces in vim 
-"" Shw extra whitespace
 set list
 set listchars=tab:->,trail:~,extends:>,precedes:<
 

@@ -25,12 +25,10 @@ syntax on
 
 
 " Rebind <Leader> key
-" I like to have it here becuase it is easier to reach than the default and
-" it is next to ``m`` and ``n`` which I use for navigating between tabs.
- let mapleader = ","
+" I like the biggest key in the keyboard to be my leader key.
+let mapleader = "\<Space>"
 
-
-" Bind nohl
+"    Bind nohl
 " Removes highlight of your last search
 " ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
 "" noremap <C-n> :nohl<CR>
@@ -40,12 +38,12 @@ syntax on
 
 " Quicksave command
 " noremap <Leader>s :update<CR>
-" inoremap <Leader>s :update<CR>
+" vnoremap <Leader>s :update<CR>
 " inoremap <Leader>s :update<CR>
 
- noremap <C-Z> :update<CR>
- vnoremap <C-Z> <C-C>:update<CR>
- inoremap <C-Z> <C-O>:update<CR>
+noremap <C-Z> :update<CR>
+vnoremap <C-Z> <C-C>:update<CR>
+inoremap <C-Z> <C-O>:update<CR>
 
 
 " Quick quit command
@@ -92,8 +90,8 @@ syntax on
 
 " Enable syntax highlighting
 " You need to reload this file for the change to apply
-"" filetype off
-"" filetype plugin indent on
+"" f iletype off
+"" f iletype plugin indent on
 "" syntax on
 
 
@@ -150,10 +148,6 @@ syntax on
 " ============================================================================
 
 
-" Settings for vim-powerline
-" cd ~/.vim/bundle
-" git clone git://github.com/Lokaltog/vim-powerline.git
- set laststatus=2
 
 
 " Settings for ctrlp
@@ -218,6 +212,7 @@ syntax on
 autocmd BufWritePost *.py call Flake8()
 
 " Show white spaces in vim 
+"" Shw extra whitespace
 set list
 set listchars=tab:->,trail:~,extends:>,precedes:<
 
@@ -225,24 +220,54 @@ if $COLORTERM == 'gnome-terminal'
       set t_Co=256
   endif
 
+" Solarized color scheme for vim 
+" $ cd ~/.vim/bundle
+" $ git clone git://github.com/altercation/vim-colors-solarized.git
+
+" set term=xterm-256color
+if !has('gui_running')
+" let g:solarized_termcolors = &t_Co
+"    let g:solarized_termtrans = 1
+endif
+set background=dark
+colorscheme solarized
+
 " let &colorcolumn=join(range(81,999),",")
- hi ColorColumn guibg=#5E6273 ctermbg=246
+ hi ColorColumn guibg=#0EE642 ctermbg=24
 " highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 " match OverLength /\%81v.\+/
 " set colorcolumn=80
 au BufWinEnter *.py let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 autocmd FileType python setlocal cc=80
 
-" Solarized color scheme for vim 
-" $ cd ~/.vim/bundle
-" $ git clone git://github.com/altercation/vim-colors-solarized.git
-
-let g:solarized_termcolors=256
-
-set background=dark
-colorscheme solarized
 
 " run python by pressin f9
 nnoremap <buffer> <F9> :exec '!python3.4' shellescape(@%, 1)<cr>
+call togglebg#map("<F5>")
 
+" Vim airline is a replacement for  vim-powerline.
+" For this to work remove the vim-powerline directory from .vim/bundle folder
+" and install vim-airline using the following
+" $ cd ~/.vim/bundle
+" $ git clone https://github.com/bling/vim-airline ~/.vim/bundle/vim-airline
+" $ cd /.fonts
+" $ git clone https://github.com/powerline/fonts.git
+" $ cd fonts
+" $ ./install.sh
+" $ cd
+" $ wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+" $ wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+" $ mv PowerlineSymbols.otf ~/.fonts/
+" $ fc-cache -vf ~/.fonts/
+" $ mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+" Sometime you may need to reboot the machine.
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+set laststatus=2
+
+" Settings for vim-powerline
+" cd ~/.vim/bundle
+" git clone git://github.com/Lokaltog/vim-powerline.git
+" set laststatus=2
 " End of .vimrc

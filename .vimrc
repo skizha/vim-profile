@@ -1,4 +1,4 @@
-filetype off
+:filetype off
 
 execute pathogen#infect()
 execute  pathogen#helptags()
@@ -25,8 +25,17 @@ syntax on
 
 
 " Rebind <Leader> key
-" I like the biggest key in the keyboard to be my leader key.
+" I like to have it here becuase it is easier to reach than the default and
+" it is next to ``m`` and ``n`` which I use for navigating between tabs.
+" let mapleader = ","
 let mapleader = "\<Space>"
+
+
+" Disable the keyboard arrow keys for movement.
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 
 "    Bind nohl
 " Removes highlight of your last search
@@ -148,6 +157,10 @@ inoremap <C-Z> <C-O>:update<CR>
 " ============================================================================
 
 
+" Settings for vim-powerline
+" cd ~/.vim/bundle
+" git clone git://github.com/Lokaltog/vim-powerline.git
+ set laststatus=2
 
 
 " Settings for ctrlp
@@ -245,29 +258,7 @@ autocmd FileType python setlocal cc=80
 nnoremap <buffer> <F9> :exec '!python3.4' shellescape(@%, 1)<cr>
 call togglebg#map("<F5>")
 
-" Vim airline is a replacement for  vim-powerline.
-" For this to work remove the vim-powerline directory from .vim/bundle folder
-" and install vim-airline using the following
-" $ cd ~/.vim/bundle
-" $ git clone https://github.com/bling/vim-airline ~/.vim/bundle/vim-airline
-" $ cd /.fonts
-" $ git clone https://github.com/powerline/fonts.git
-" $ cd fonts
-" $ ./install.sh
-" $ cd
-" $ wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
-" $ wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
-" $ mv PowerlineSymbols.otf ~/.fonts/
-" $ fc-cache -vf ~/.fonts/
-" $ mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
-" Sometime you may need to reboot the machine.
-
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-set laststatus=2
 
-" Settings for vim-powerline
-" cd ~/.vim/bundle
-" git clone git://github.com/Lokaltog/vim-powerline.git
-" set laststatus=2
 " End of .vimrc

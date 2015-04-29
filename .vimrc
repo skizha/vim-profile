@@ -1,4 +1,4 @@
-:filetype off
+filetype off
 
 execute pathogen#infect()
 execute  pathogen#helptags()
@@ -97,13 +97,6 @@ inoremap <C-Z> <C-O>:update<CR>
 "" color wombat256mod
 
 
-" Enable syntax highlighting
-" You need to reload this file for the change to apply
-"" f iletype off
-"" f iletype plugin indent on
-"" syntax on
-
-
 " Showing line numbers and length
  set number  " show line numbers
 "" set tw=79   " width of document (used by gd)
@@ -171,30 +164,11 @@ inoremap <C-Z> <C-O>:update<CR>
 "" set wildignore+=*_build/*
 "" set wildignore+=*/coverage/*
 
-
-" Settings for python-mode
-" Note: I'm no longer using this. Leave this commented out
-" and uncomment the part about jedi-vim instead
-" cd ~/.vim/bundle
-" git clone https://github.com/klen/python-mode
-"" map <Leader>g :call RopeGotoDefinition()<CR>
-"" let ropevim_enable_shortcuts = 1
-"" let g:pymode_rope_goto_def_newwin = "vnew"
-"" let g:pymode_rope_extended_complete = 1
-"" let g:pymode_breakpoint = 0
-"" let g:pymode_syntax = 1
-"" let g:pymode_syntax_builtin_objs = 0
-"" let g:pymode_syntax_builtin_funcs = 0
-"" map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
-
 " Settings for jedi-vim
 " cd ~/.vim/bundle
 " git clone git://github.com/davidhalter/jedi-vim.git
- let g:jedi#usages_command = "<leader>z"
- let g:jedi#popup_on_dot = 0
- let g:jedi#popup_select_first = 0
  map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
-
+let g:jedi#usages_command = ""
 " Better navigating through omnicomplete option list
 " See http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
 "" set completeopt=longest,menuone
@@ -258,7 +232,31 @@ autocmd FileType python setlocal cc=80
 nnoremap <buffer> <F9> :exec '!python3.4' shellescape(@%, 1)<cr>
 call togglebg#map("<F5>")
 
+" vim arilinne is a replacement for  vim-powerline.
+" For this to work remove the vim-powerline directory from .vim/bundle folder
+" and install vim-airline using the following
+" $ cd ~/.vim/bundle
+" $ git clone https://github.com/bling/vim-airline ~/.vim/bundle/vim-airline
+" $ cd /.fonts
+" $ git clone https://github.com/powerline/fonts.git
+" $ cd fonts
+" $ ./install.sh
+" $ cd
+" $ wget
+" https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+" $ wget
+" https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+" $ mv PowerlineSymbols.otf ~/.fonts/
+" $ fc-cache -vf ~/.fonts/
+" $ mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+" Sometime you may need to reboot the machine.
+"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-
-" End of .vimrc
+set laststatus=2
+"
+" " Settings for vim-powerline
+" " cd ~/.vim/bundle
+"  git clone git://github.com/Lokaltog/vim-powerline.git
+" set laststatus=2
+" " End of .vimrc

@@ -25,9 +25,8 @@ syntax on
 
 
 " Rebind <Leader> key
-" I like to have it here becuase it is easier to reach than the default and
-" it is next to ``m`` and ``n`` which I use for navigating between tabs.
-" let mapleader = ","
+" Space is the biggest key in the keyboard and can be easily accessed using
+" both hands
 let mapleader = "\<Space>"
 
 
@@ -37,22 +36,15 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-"    Bind nohl
-" Removes highlight of your last search
-" ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
-"" noremap <C-n> :nohl<CR>
-"" vnoremap <C-n> :nohl<CR>
-"" inoremap <C-n> :nohl<CR>
-
+" Toggle highlight search
+nmap <silent> <leader>s :set hlsearch!<CR>
 
 " Quicksave command
-" noremap <Leader>s :update<CR>
-" vnoremap <Leader>s :update<CR>
-" inoremap <Leader>s :update<CR>
-
+" As soon I save, I would like vim to go to the normal mode. If you don't need
+" that behaviour you can remove the <Esc> from the end of the command
 noremap <C-Z> :update<CR>
 vnoremap <C-Z> <C-C>:update<CR>
-inoremap <C-Z> <C-O>:update<CR>
+inoremap <C-Z> <C-O>:update<CR><Esc>
 
 
 " Quick quit command
@@ -232,7 +224,7 @@ autocmd FileType python setlocal cc=80
 nnoremap <buffer> <F9> :exec '!python3.4' shellescape(@%, 1)<cr>
 call togglebg#map("<F5>")
 
-" vim arilinne is a replacement for  vim-powerline.
+" vim airlinne is a replacement for  vim-powerline.
 " For this to work remove the vim-powerline directory from .vim/bundle folder
 " and install vim-airline using the following
 " $ cd ~/.vim/bundle

@@ -1,5 +1,13 @@
 filetype off
 
+
+" Setup Pathogen to manage your plugins
+" mkdir -p ~/.vim/autoload ~/.vim/bundle
+" curl -so ~/.vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+" Now you can install any plugin into a .vim/bundle/plugin-name/ folder
+"" call pathogen#infect()
+
+
 execute pathogen#infect()
 execute  pathogen#helptags()
 
@@ -82,13 +90,6 @@ inoremap <C-Z> <C-O>:update<CR><Esc>
 "" au InsertLeave * match ExtraWhitespace /\s\+$/
 
 
-" Color scheme
-" mkdir -p ~/.vim/colors && cd ~/.vim/colors
-" wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
-"" set t_Co=256
-"" color wombat256mod
-
-
 " Showing line numbers and length
  set number  " show line numbers
 "" set tw=79   " width of document (used by gd)
@@ -104,8 +105,8 @@ inoremap <C-Z> <C-O>:update<CR><Esc>
 
 
 " Useful settings
-"" set history=700
-"" set undolevels=700
+set history=700
+set undolevels=700
 
 
 " Real programmers don't use TABs but spaces
@@ -117,24 +118,17 @@ inoremap <C-Z> <C-O>:update<CR><Esc>
 
 
 " Make search case insensitive
-"" set hlsearch
-"" set incsearch
-"" set ignorecase
-"" set smartcase
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
 
 
-" Disable stupid backup and swap files - they trigger too many events
+" Disable backup and swap files - they trigger too many events
 " for file system watchers
 "" set nobackup
 "" set nowritebackup
 "" set noswapfile
-
-
-" Setup Pathogen to manage your plugins
-" mkdir -p ~/.vim/autoload ~/.vim/bundle
-" curl -so ~/.vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
-" Now you can install any plugin into a .vim/bundle/plugin-name/ folder
-"" call pathogen#infect()
 
 
 " ============================================================================
@@ -184,22 +178,22 @@ let g:jedi#usages_command = ""
 " wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
  set nofoldenable
 
- " Flake8 for code analysis 
+ " Flake8 for code analysis
  " sudo pip install flake8
  " cd `/.vim/bundles
  " git clone --recursive https://github.com/nvie/vim-flake8
 autocmd BufWritePost *.py call Flake8()
 
 " Show white spaces in vim 
-"" Shw extra whitespace
+"" Show extra whitespace
 set list
 set listchars=tab:->,trail:~,extends:>,precedes:<
 
 if $COLORTERM == 'gnome-terminal'
       set t_Co=256
-  endif
+endif
 
-" Solarized color scheme for vim 
+" Solarized color scheme for vim
 " $ cd ~/.vim/bundle
 " $ git clone git://github.com/altercation/vim-colors-solarized.git
 
@@ -246,9 +240,3 @@ call togglebg#map("<F5>")
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 set laststatus=2
-"
-" " Settings for vim-powerline
-" " cd ~/.vim/bundle
-"  git clone git://github.com/Lokaltog/vim-powerline.git
-" set laststatus=2
-" " End of .vimrc
